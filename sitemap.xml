@@ -6,6 +6,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://mle-infrastructure.github.io/mle_hyperopt/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_logging/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_monitor/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://mle-infrastructure.github.io/mle_scheduler/</loc>
          <lastmod>2021-12-13</lastmod>
          <changefreq>daily</changefreq>
@@ -32,21 +47,6 @@
     </url>
     <url>
          <loc>https://mle-infrastructure.github.io/dev/testing/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/hyperopt/mle_hyperopt/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/logging/mle_logging/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/monitor/mle_monitor/</loc>
          <lastmod>2021-12-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
