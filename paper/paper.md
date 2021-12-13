@@ -85,7 +85,7 @@ queue.run()
 
 # Merge logs of random seeds & configs -> load & get final scores
 queue.merge_configs(merge_seeds=True)
-test_scores = [queue.meta_log[r].stats.test_loss.mean[-1] for r in queue.mle_run_ids]
+test_scores = [queue.log[r].stats.test_loss.mean[-1] for r in queue.mle_run_ids]
 
 # Update the hyperparameter search strategy
 strategy.tell(configs, test_scores)
@@ -101,7 +101,7 @@ protocol_db.complete(new_experiment_id)
 
 # Availability, Test Coverage & Getting Started
 
-`MLE-Infrastructure` and all its sub-packages are publicly available under [MIT license](https://github.com/mle-infrastructure/mle-toolbox/blob/main/LICENSE) at <https://github.com/mle-infrastructure>. We provide documentation, extensive testing and example notebooks for each individual sub-package as well as their integration at <https://roberttlange.github.io/mle-infrastructure>. Finally, we provide a set of [video tutorials](https://www.youtube.com/channel/UC0-TXSpwRL9EQbW-SIqjqjg) to get started.
+`MLE-Infrastructure` and all its sub-packages are publicly available under [MIT license](https://github.com/mle-infrastructure/mle-toolbox/blob/main/LICENSE) at <https://github.com/mle-infrastructure>. We provide documentation, extensive testing and example notebooks for each individual sub-package as well as their integration at <https://mle-infrastructure.github.io/>. Finally, we provide a set of [video tutorials](https://www.youtube.com/channel/UC0-TXSpwRL9EQbW-SIqjqjg) to get started.
 
 # Acknowledgements
 

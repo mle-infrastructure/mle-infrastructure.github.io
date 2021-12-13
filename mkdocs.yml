@@ -43,20 +43,19 @@ nav:
     - mle_scheduler.md
   - Monitor:
     - mle_monitor.md
-  # - Toolbox:
-  #   - toolbox/mle_toolbox.md
-  #   - toolbox/mle_run.md
-  #   - toolbox/mle_retrieve.md
-  #   - toolbox/mle_report.md
-  #   - toolbox/mle_sync_gcs.md
-  #   - toolbox/mle_monitor.md
-  #   - toolbox/mle_init.md
-  #   - toolbox/experiments.md
-  # - Getting Started:
-  #   - setup/installation.md
-  #   - setup/configuration.md
-  #   - setup/template.md
-  #   - setup/video_tutorials.md
+  - Toolbox:
+    - mle_toolbox/toolbox.md
+    - mle_toolbox/run.md
+    - mle_toolbox/retrieve.md
+    - mle_toolbox/report.md
+    - mle_toolbox/sync_gcs.md
+    - mle_toolbox/monitor.md
+    - mle_toolbox/init.md
+    - mle_toolbox/experiments.md
+  - Getting Started:
+    - setup/installation.md
+    - setup/configuration.md
+    - setup/video_tutorials.md
 
 
 markdown_extensions:
