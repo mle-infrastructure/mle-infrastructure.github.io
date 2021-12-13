@@ -51,6 +51,46 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://mle-infrastructure.github.io/mle_toolbox/experiments/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_toolbox/init/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_toolbox/monitor/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_toolbox/report/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_toolbox/retrieve/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_toolbox/run/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_toolbox/sync_gcs/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mle-infrastructure.github.io/mle_toolbox/toolbox/</loc>
+         <lastmod>2021-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://mle-infrastructure.github.io/setup/configuration/</loc>
          <lastmod>2021-12-13</lastmod>
          <changefreq>daily</changefreq>
@@ -61,52 +101,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mle-infrastructure.github.io/setup/template/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://mle-infrastructure.github.io/setup/video_tutorials/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/toolbox/experiments/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/toolbox/mle_init/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/toolbox/mle_monitor/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/toolbox/mle_report/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/toolbox/mle_retrieve/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/toolbox/mle_run/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/toolbox/mle_sync_gcs/</loc>
-         <lastmod>2021-12-13</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://mle-infrastructure.github.io/toolbox/mle_toolbox/</loc>
          <lastmod>2021-12-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
