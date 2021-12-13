@@ -36,27 +36,27 @@ theme:
 nav:
   - Home: index.md
   - Logging:
-    - logging/mle_logging.md
+    - mle_logging.md
   - Hyperopt:
-    - hyperopt/mle_hyperopt.md
+    - mle_hyperopt.md
   - Scheduler:
     - mle_scheduler.md
   - Monitor:
-    - monitor/mle_monitor.md
-  - Toolbox:
-    - toolbox/mle_toolbox.md
-    - toolbox/mle_run.md
-    - toolbox/mle_retrieve.md
-    - toolbox/mle_report.md
-    - toolbox/mle_sync_gcs.md
-    - toolbox/mle_monitor.md
-    - toolbox/mle_init.md
-    - toolbox/experiments.md
-  - Getting Started:
-    - setup/installation.md
-    - setup/configuration.md
-    - setup/template.md
-    - setup/video_tutorials.md
+    - mle_monitor.md
+  # - Toolbox:
+  #   - toolbox/mle_toolbox.md
+  #   - toolbox/mle_run.md
+  #   - toolbox/mle_retrieve.md
+  #   - toolbox/mle_report.md
+  #   - toolbox/mle_sync_gcs.md
+  #   - toolbox/mle_monitor.md
+  #   - toolbox/mle_init.md
+  #   - toolbox/experiments.md
+  # - Getting Started:
+  #   - setup/installation.md
+  #   - setup/configuration.md
+  #   - setup/template.md
+  #   - setup/video_tutorials.md
 
 
 markdown_extensions:
