@@ -13,16 +13,48 @@ By default the toolbox will run locally and without any GCS bucket backup of you
 1. After installation execute `mle init`. This will walk you through all configuration steps in your CLI and save your configuration in `~/mle_config.toml`.
 2. Manually edit the [`config_template.toml`](https://github.com/RobertTLange/mle-toolbox/tree/main/config_template.toml) template. Move/rename the template to your home directory via `mv config_template.toml ~/mle_config.toml`.
 
-The configuration procedure consists of 3 optional steps, which depend on your needs:
+The configuration procedure consists of 4 optional steps, which depend on your needs:
 
 1. Set whether to store all results & your database locally or remote in a GCS bucket.
 2. Add SGE and/or Slurm credentials & cluster-specific details (headnode, partitions, proxy server, etc.).
 3. Add the GCP project, GCS bucket name and database filename to store your results.
+4. Add credentials for a [slack bot](https://github.com/sprekelerlab/slack-clusterbot/) integration that notifies you about the state of your experiments.
 
 
-## Remote Resource Execution
+## General Settings 🦿
 
-The toolbox supports the usage of multiple different compute resources. This includes your local machine, but more importantly remote clusters such as the prominent slurm and grid engine schedulers and Google Cloud Platform VMs. In order to be able to schedule remote jobs from your local machine or retrieve the results from the cluster, you will have to provide your credentials, headnode and partition names as well as some default arguments for jobs:
+The configuration starts with a set of basic settings such as the path to your local experiment protocol pickle database, the path to your private key (for passwordless scp/rsync/etc.), environment settings and whether you would like to use slack bot notifications:
+
+```toml
+#------------------------------------------------------------------------------#
+# 1. General Toolbox Configuration - Verbosity + Whether to use GCS Storage
+#------------------------------------------------------------------------------#
+[general]
+# Local filename to store protocol DB in
+local_protocol_fname = '~/local_mle_protocol.db'
+
+# Path to private key for passwordless SSH access
+pkey_path = '~/.ssh/id_rsa'
+
+# Whether to use conda or venv for experiment virtual environment
+use_conda_venv = true
+use_venv_venv = false
+
+# Whether to use slack bot notifications
+use_slack_bot = false
+
+# Set remote experiment submission environment name
+remote_env_name = 'mle-toolbox'
+
+# Set the random seed for the toolbox/full experiment reproducibility
+random_seed = 42
+```
+
+You can also set the random seed for reproducibility of your hyperparameter search schedules.
+
+## Remote Resource Execution 🏃
+
+The toolbox supports the usage of multiple different compute resources. This includes your local machine, but more importantly remote clusters such as the prominent Slurm and Grid Engine schedulers and Google Cloud Platform VMs. In order to be able to schedule remote jobs from your local machine or retrieve the results from the cluster, you will have to provide your credentials, headnode and partition names as well as some default arguments for jobs:
 
 ```toml
 #------------------------------------------------------------------------------#
@@ -32,27 +64,24 @@ The toolbox supports the usage of multiple different compute resources. This inc
     # Slurm credentials - Only if you want to retrieve results from cluster
     [slurm.credentials]
     user_name = '<slurm-user-name>'
-    password = '<slurm-password>'
-    aes_key = '<aes-key>'
 
     # Slurm cluster information - Job scheduling, monitoring & retrieval
     [slurm.info]
-    # Headnode name & partitions to monitor/run jobs on
-    head_names = ['<headnode1>']
-    node_reg_exp = ['<nodes-to-monitor1>']
+    # Partitions to monitor/run jobs on
     partitions = ['<partition1>']
 
     # Info for results retrieval & internet tunneling if local launch
-    main_server_name = '<main-server-ip>'
-    jump_server_name = '<jump-host-ip>'
+    main_server_name = '<main-server-ip>'   # E.g. 'gateway.hpc.tu-berlin.de'
+    jump_server_name = '<jump-host-ip>'   # E.g. 'sshgate.tu-berlin.de'
     ssh_port = 22
     # Add proxy server for internet connection if needed!
-    http_proxy = "http://<slurm_headnode>:3128/"
-    https_proxy = "http://<slurm_headnode>:3128/"
+    http_proxy = "http://<slurm_headnode>:3128/"  # E.g. 'http://frontend01:3128/'
+    https_proxy = "http://<slurm_headnode>:3128/"  # E.g. 'http://frontend01:3128/'
 
     # Default Slurm job arguments (if not supplied in job .yaml config)
     [slurm.default_job_args]
     num_logical_cores = 2
+    gpu_tpye = "tesla"
     partition = '<partition1>'
     job_name = 'temp'
     log_file = 'log'
@@ -60,7 +89,7 @@ The toolbox supports the usage of multiple different compute resources. This inc
     env_name = '<mle-default-env>'
 ```
 
-### Google Cloud Platform VM Jobs
+## Google Cloud Platform ☁️
 
 If you want to use the toolbox for orchestrating GCP VMs, you will need to have set up the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install). This will work as follows:
 
@@ -72,7 +101,7 @@ curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-
 
 At initialization you will be required to select a GCP project. Internally the toolbox will call different `gcloud` commands to launch new VMs and/or monitor the status of running jobs.
 
-## Google Cloud Storage Backups
+### GCS Bucket Backups 🗳️
 
 If you choose so, the toolbox will sync a local version of your experiment protocol database with a GCS bucket. Furthermore, the results of your experiments will be zipped and stored via a unique hash. You can afterwards use [`mle retrieve`](../../core_api/mle_retrieve/) in order to retrieve these backed up results from the bucket. These functionalities rely on `google-cloud-storage` and you having set your `GOOGLE_APPLICATION_CREDENTIALS`. You have to follow four steps:
 
@@ -84,44 +113,33 @@ If you choose so, the toolbox will sync a local version of your experiment proto
 ```toml
 #------------------------------------------------------------------------------#
 # 4. GCP Config - Credentials, Project + Buffer for Meta-Experiment Protocol
+# OPTIONAL: Only required if you want to sync protocol with GCS
 #------------------------------------------------------------------------------#
 [gcp]
-# Set absolute path to the GCloud .json credentials - on Slurm/SGE cluster
-slurm_credentials_path = "~/<slurm_path_to_gcloud_credentials>.json"
-sge_credentials_path = "~/<sge_path_to_gcloud_credentials>.json"
-
 # Set GCloud project and bucket name for storage/compute instances
 project_name = "<gcloud_project_name>"
 bucket_name = "<gcloud_bucket_name>"
-```
 
-## PickleDB Experiment Logging
-
-We rely on [`pickleDB`](https://pythonhosted.org/pickleDB/) for logging meta data of your experiments. It is a lightweight alternative to a full NoSQL-style database, which would require more setup. Instead, `pickleDB` will create a simple json-style file storing the experiment purpose, id, compute resource, configuration, etc.. You can change the default storage paths for the local and remote version in your `~/mle_config.toml`:
-
-```toml
-#------------------------------------------------------------------------------#
-# 1. General Toolbox Configuration - Verbosity + Whether to use GCS Storage
-#------------------------------------------------------------------------------#
-[general]
-# Local filename to store protocol DB in
-local_protocol_fname = '~/local_mle_protocol.db'
-...
-
-#------------------------------------------------------------------------------#
-# 4. GCP Config - Credentials, Project + Buffer for Meta-Experiment Protocol
-#------------------------------------------------------------------------------#
-[gcp]
-...
 # Filename to retrieve from gcloud bucket & where to store
 protocol_fname = "gcloud_mle_protocol.db"
+
+# Syncing of protocol with GCloud
+use_protocol_sync = false
+
+# Storing of experiment results in bucket
+use_results_storage = false
+
+    # Default GCP job arguments (if not differently supplied)
+    [gcp.default_job_arguments]
+    num_logical_cores = 2
+    num_gpus = 0
+    use_tpus = false
+    job_name = 'temp'
+    log_file = 'log'
+    err_file = 'err'
 ```
 
-## Resource Dashboard Monitoring
-
-[`mle monitor`](../../core_api/mle_monitor/) - add how to set monitored partition/nodes/etc.
-
-## Slack Bot Notification
+## Slack Bot Notification 🔈
 
 If you want to, you can add slack notifications using the [`slack-clusterbot`](https://github.com/sprekelerlab/slack-clusterbot/). If you want to learn more about how to set it up, checkout the [wiki documentation](https://github.com/sprekelerlab/slack-clusterbot/wiki/Installation). To make it short, you need to create a Bot User OAuth Access Token for your slack workspace and afterwards add this to your `mle_config.toml`:
 

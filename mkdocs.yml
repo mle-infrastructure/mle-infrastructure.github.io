@@ -48,7 +48,7 @@ nav:
     - mle_toolbox/subcommands.md
     - mle_toolbox/experiments.md
     - mle_toolbox/configuration.md
-    - mle_toolbox/getting_started.md
+    #- mle_toolbox/getting_started.md
 
 markdown_extensions:
   - codehilite:
