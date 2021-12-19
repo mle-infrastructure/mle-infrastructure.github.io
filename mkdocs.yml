@@ -45,18 +45,10 @@ nav:
     - mle_monitor.md
   - Toolbox:
     - mle_toolbox/toolbox.md
-    - mle_toolbox/run.md
-    - mle_toolbox/retrieve.md
-    - mle_toolbox/report.md
-    - mle_toolbox/sync_gcs.md
-    - mle_toolbox/monitor.md
-    - mle_toolbox/init.md
+    - mle_toolbox/subcommands.md
     - mle_toolbox/experiments.md
-  - Getting Started:
-    - setup/installation.md
-    - setup/configuration.md
-    - setup/video_tutorials.md
-
+    - mle_toolbox/configuration.md
+    - mle_toolbox/getting_started.md
 
 markdown_extensions:
   - codehilite:

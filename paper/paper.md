@@ -7,12 +7,12 @@ tags:
   - Hyperparameter Optimization
 authors:
   - name: Robert Tjarko Lange
-    affiliation: "1"
-  - name: Henning Sprekeler
-    affiliation: "1"
+    affiliation: "1, 2"
 affiliations:
  - name: Technical University Berlin
    index: 1
+ - name: Science of Intelligence, Research Cluster of Excellence
+   index: 2
 date: 11 December 2021
 bibliography: paper.bib
 ---
