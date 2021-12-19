@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://mle-infrastructure.github.io/mle_toolbox/configuration/">
       
       <link rel="icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.2">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.f7951f6f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -600,7 +600,7 @@
   
     <li class="md-nav__item">
       <a href="../experiments/" class="md-nav__link">
-        Supported Experiments
+        Experiment Configuration
       </a>
     </li>
   
@@ -647,16 +647,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#remote-resource-execution" class="md-nav__link">
-    Remote Resource Execution
+  <a href="#general-settings" class="md-nav__link">
+    General Settings 🦿
   </a>
   
-    <nav class="md-nav" aria-label="Remote Resource Execution">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-resource-execution" class="md-nav__link">
+    Remote Resource Execution 🏃
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-cloud-platform" class="md-nav__link">
+    Google Cloud Platform ☁️
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Cloud Platform ☁️">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#google-cloud-platform-vm-jobs" class="md-nav__link">
-    Google Cloud Platform VM Jobs
+  <a href="#gcs-bucket-backups" class="md-nav__link">
+    GCS Bucket Backups 🗳️
   </a>
   
 </li>
@@ -667,29 +681,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#google-cloud-storage-backups" class="md-nav__link">
-    Google Cloud Storage Backups
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pickledb-experiment-logging" class="md-nav__link">
-    PickleDB Experiment Logging
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resource-dashboard-monitoring" class="md-nav__link">
-    Resource Dashboard Monitoring
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#slack-bot-notification" class="md-nav__link">
-    Slack Bot Notification
+    Slack Bot Notification 🔈
   </a>
   
 </li>
@@ -698,20 +691,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting_started/" class="md-nav__link">
-        Video Tutorials
-      </a>
     </li>
   
 
@@ -750,16 +729,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#remote-resource-execution" class="md-nav__link">
-    Remote Resource Execution
+  <a href="#general-settings" class="md-nav__link">
+    General Settings 🦿
   </a>
   
-    <nav class="md-nav" aria-label="Remote Resource Execution">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-resource-execution" class="md-nav__link">
+    Remote Resource Execution 🏃
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-cloud-platform" class="md-nav__link">
+    Google Cloud Platform ☁️
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Cloud Platform ☁️">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#google-cloud-platform-vm-jobs" class="md-nav__link">
-    Google Cloud Platform VM Jobs
+  <a href="#gcs-bucket-backups" class="md-nav__link">
+    GCS Bucket Backups 🗳️
   </a>
   
 </li>
@@ -770,29 +763,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#google-cloud-storage-backups" class="md-nav__link">
-    Google Cloud Storage Backups
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pickledb-experiment-logging" class="md-nav__link">
-    PickleDB Experiment Logging
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resource-dashboard-monitoring" class="md-nav__link">
-    Resource Dashboard Monitoring
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#slack-bot-notification" class="md-nav__link">
-    Slack Bot Notification
+    Slack Bot Notification 🔈
   </a>
   
 </li>
@@ -828,14 +800,41 @@
 <li>After installation execute <code>mle init</code>. This will walk you through all configuration steps in your CLI and save your configuration in <code>~/mle_config.toml</code>.</li>
 <li>Manually edit the <a href="https://github.com/RobertTLange/mle-toolbox/tree/main/config_template.toml"><code>config_template.toml</code></a> template. Move/rename the template to your home directory via <code>mv config_template.toml ~/mle_config.toml</code>.</li>
 </ol>
-<p>The configuration procedure consists of 3 optional steps, which depend on your needs:</p>
+<p>The configuration procedure consists of 4 optional steps, which depend on your needs:</p>
 <ol>
 <li>Set whether to store all results &amp; your database locally or remote in a GCS bucket.</li>
 <li>Add SGE and/or Slurm credentials &amp; cluster-specific details (headnode, partitions, proxy server, etc.).</li>
 <li>Add the GCP project, GCS bucket name and database filename to store your results.</li>
+<li>Add credentials for a <a href="https://github.com/sprekelerlab/slack-clusterbot/">slack bot</a> integration that notifies you about the state of your experiments.</li>
 </ol>
-<h2 id="remote-resource-execution">Remote Resource Execution</h2>
-<p>The toolbox supports the usage of multiple different compute resources. This includes your local machine, but more importantly remote clusters such as the prominent slurm and grid engine schedulers and Google Cloud Platform VMs. In order to be able to schedule remote jobs from your local machine or retrieve the results from the cluster, you will have to provide your credentials, headnode and partition names as well as some default arguments for jobs:</p>
+<h2 id="general-settings">General Settings 🦿</h2>
+<p>The configuration starts with a set of basic settings such as the path to your local experiment protocol pickle database, the path to your private key (for passwordless scp/rsync/etc.), environment settings and whether you would like to use slack bot notifications:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#------------------------------------------------------------------------------#</span>
+<span class="c1"># 1. General Toolbox Configuration - Verbosity + Whether to use GCS Storage</span>
+<span class="c1">#------------------------------------------------------------------------------#</span>
+<span class="k">[general]</span>
+<span class="c1"># Local filename to store protocol DB in</span>
+<span class="n">local_protocol_fname</span> <span class="o">=</span> <span class="s">&#39;~/local_mle_protocol.db&#39;</span>
+
+<span class="c1"># Path to private key for passwordless SSH access</span>
+<span class="n">pkey_path</span> <span class="o">=</span> <span class="s">&#39;~/.ssh/id_rsa&#39;</span>
+
+<span class="c1"># Whether to use conda or venv for experiment virtual environment</span>
+<span class="n">use_conda_venv</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">use_venv_venv</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="c1"># Whether to use slack bot notifications</span>
+<span class="n">use_slack_bot</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="c1"># Set remote experiment submission environment name</span>
+<span class="n">remote_env_name</span> <span class="o">=</span> <span class="s">&#39;mle-toolbox&#39;</span>
+
+<span class="c1"># Set the random seed for the toolbox/full experiment reproducibility</span>
+<span class="n">random_seed</span> <span class="o">=</span> <span class="mi">42</span>
+</code></pre></div>
+<p>You can also set the random seed for reproducibility of your hyperparameter search schedules.</p>
+<h2 id="remote-resource-execution">Remote Resource Execution 🏃</h2>
+<p>The toolbox supports the usage of multiple different compute resources. This includes your local machine, but more importantly remote clusters such as the prominent Slurm and Grid Engine schedulers and Google Cloud Platform VMs. In order to be able to schedule remote jobs from your local machine or retrieve the results from the cluster, you will have to provide your credentials, headnode and partition names as well as some default arguments for jobs:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#------------------------------------------------------------------------------#</span>
 <span class="c1"># 2. Configuration for Slurm Cluster</span>
 <span class="c1">#------------------------------------------------------------------------------#</span>
@@ -843,41 +842,38 @@
     <span class="c1"># Slurm credentials - Only if you want to retrieve results from cluster</span>
     <span class="k">[slurm.credentials]</span>
     <span class="n">user_name</span> <span class="o">=</span> <span class="s">&#39;&lt;slurm-user-name&gt;&#39;</span>
-    <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;&lt;slurm-password&gt;&#39;</span>
-    <span class="n">aes_key</span> <span class="o">=</span> <span class="s">&#39;&lt;aes-key&gt;&#39;</span>
 
     <span class="c1"># Slurm cluster information - Job scheduling, monitoring &amp; retrieval</span>
     <span class="k">[slurm.info]</span>
-    <span class="c1"># Headnode name &amp; partitions to monitor/run jobs on</span>
-    <span class="n">head_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&lt;headnode1&gt;&#39;</span><span class="p">]</span>
-    <span class="n">node_reg_exp</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&lt;nodes-to-monitor1&gt;&#39;</span><span class="p">]</span>
+    <span class="c1"># Partitions to monitor/run jobs on</span>
     <span class="n">partitions</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&lt;partition1&gt;&#39;</span><span class="p">]</span>
 
     <span class="c1"># Info for results retrieval &amp; internet tunneling if local launch</span>
-    <span class="n">main_server_name</span> <span class="o">=</span> <span class="s">&#39;&lt;main-server-ip&gt;&#39;</span>
-    <span class="n">jump_server_name</span> <span class="o">=</span> <span class="s">&#39;&lt;jump-host-ip&gt;&#39;</span>
+    <span class="n">main_server_name</span> <span class="o">=</span> <span class="s">&#39;&lt;main-server-ip&gt;&#39;</span>   <span class="c1"># E.g. &#39;gateway.hpc.tu-berlin.de&#39;</span>
+    <span class="n">jump_server_name</span> <span class="o">=</span> <span class="s">&#39;&lt;jump-host-ip&gt;&#39;</span>   <span class="c1"># E.g. &#39;sshgate.tu-berlin.de&#39;</span>
     <span class="n">ssh_port</span> <span class="o">=</span> <span class="mi">22</span>
     <span class="c1"># Add proxy server for internet connection if needed!</span>
-    <span class="n">http_proxy</span> <span class="o">=</span> <span class="s">&quot;http://&lt;slurm_headnode&gt;:3128/&quot;</span>
-    <span class="n">https_proxy</span> <span class="o">=</span> <span class="s">&quot;http://&lt;slurm_headnode&gt;:3128/&quot;</span>
+    <span class="n">http_proxy</span> <span class="o">=</span> <span class="s">&quot;http://&lt;slurm_headnode&gt;:3128/&quot;</span>  <span class="c1"># E.g. &#39;http://frontend01:3128/&#39;</span>
+    <span class="n">https_proxy</span> <span class="o">=</span> <span class="s">&quot;http://&lt;slurm_headnode&gt;:3128/&quot;</span>  <span class="c1"># E.g. &#39;http://frontend01:3128/&#39;</span>
 
     <span class="c1"># Default Slurm job arguments (if not supplied in job .yaml config)</span>
     <span class="k">[slurm.default_job_args]</span>
     <span class="n">num_logical_cores</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">gpu_tpye</span> <span class="o">=</span> <span class="s">&quot;tesla&quot;</span>
     <span class="n">partition</span> <span class="o">=</span> <span class="s">&#39;&lt;partition1&gt;&#39;</span>
     <span class="n">job_name</span> <span class="o">=</span> <span class="s">&#39;temp&#39;</span>
     <span class="n">log_file</span> <span class="o">=</span> <span class="s">&#39;log&#39;</span>
     <span class="n">err_file</span> <span class="o">=</span> <span class="s">&#39;err&#39;</span>
     <span class="n">env_name</span> <span class="o">=</span> <span class="s">&#39;&lt;mle-default-env&gt;&#39;</span>
 </code></pre></div>
-<h3 id="google-cloud-platform-vm-jobs">Google Cloud Platform VM Jobs</h3>
+<h2 id="google-cloud-platform">Google Cloud Platform ☁️</h2>
 <p>If you want to use the toolbox for orchestrating GCP VMs, you will need to have set up the <a href="https://cloud.google.com/sdk/docs/install">Google Cloud SDK</a>. This will work as follows:</p>
 <div class="highlight"><pre><span></span><code>curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-353.0.0-linux-x86_64.tar.gz
 ./google-cloud-sdk/install.sh
 ./google-cloud-sdk/bin/gcloud init
 </code></pre></div>
 <p>At initialization you will be required to select a GCP project. Internally the toolbox will call different <code>gcloud</code> commands to launch new VMs and/or monitor the status of running jobs.</p>
-<h2 id="google-cloud-storage-backups">Google Cloud Storage Backups</h2>
+<h3 id="gcs-bucket-backups">GCS Bucket Backups 🗳️</h3>
 <p>If you choose so, the toolbox will sync a local version of your experiment protocol database with a GCS bucket. Furthermore, the results of your experiments will be zipped and stored via a unique hash. You can afterwards use <a href="../../core_api/mle_retrieve/"><code>mle retrieve</code></a> in order to retrieve these backed up results from the bucket. These functionalities rely on <code>google-cloud-storage</code> and you having set your <code>GOOGLE_APPLICATION_CREDENTIALS</code>. You have to follow four steps:</p>
 <ol>
 <li>Create your <code>.json</code> key file <a href="https://cloud.google.com/docs/authentication/getting-started">here</a>. Name it <code>~/gcp_mle_key.json</code></li>
@@ -887,37 +883,32 @@
 </ol>
 <div class="highlight"><pre><span></span><code><span class="c1">#------------------------------------------------------------------------------#</span>
 <span class="c1"># 4. GCP Config - Credentials, Project + Buffer for Meta-Experiment Protocol</span>
+<span class="c1"># OPTIONAL: Only required if you want to sync protocol with GCS</span>
 <span class="c1">#------------------------------------------------------------------------------#</span>
 <span class="k">[gcp]</span>
-<span class="c1"># Set absolute path to the GCloud .json credentials - on Slurm/SGE cluster</span>
-<span class="n">slurm_credentials_path</span> <span class="o">=</span> <span class="s">&quot;~/&lt;slurm_path_to_gcloud_credentials&gt;.json&quot;</span>
-<span class="n">sge_credentials_path</span> <span class="o">=</span> <span class="s">&quot;~/&lt;sge_path_to_gcloud_credentials&gt;.json&quot;</span>
-
 <span class="c1"># Set GCloud project and bucket name for storage/compute instances</span>
 <span class="n">project_name</span> <span class="o">=</span> <span class="s">&quot;&lt;gcloud_project_name&gt;&quot;</span>
 <span class="n">bucket_name</span> <span class="o">=</span> <span class="s">&quot;&lt;gcloud_bucket_name&gt;&quot;</span>
-</code></pre></div>
-<h2 id="pickledb-experiment-logging">PickleDB Experiment Logging</h2>
-<p>We rely on <a href="https://pythonhosted.org/pickleDB/"><code>pickleDB</code></a> for logging meta data of your experiments. It is a lightweight alternative to a full NoSQL-style database, which would require more setup. Instead, <code>pickleDB</code> will create a simple json-style file storing the experiment purpose, id, compute resource, configuration, etc.. You can change the default storage paths for the local and remote version in your <code>~/mle_config.toml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#------------------------------------------------------------------------------#</span>
-<span class="c1"># 1. General Toolbox Configuration - Verbosity + Whether to use GCS Storage</span>
-<span class="c1">#------------------------------------------------------------------------------#</span>
-<span class="k">[general]</span>
-<span class="c1"># Local filename to store protocol DB in</span>
-<span class="n">local_protocol_fname</span> <span class="o">=</span> <span class="s">&#39;~/local_mle_protocol.db&#39;</span>
-<span class="p">...</span>
 
-<span class="c1">#------------------------------------------------------------------------------#</span>
-<span class="c1"># 4. GCP Config - Credentials, Project + Buffer for Meta-Experiment Protocol</span>
-<span class="c1">#------------------------------------------------------------------------------#</span>
-<span class="k">[gcp]</span>
-<span class="p">...</span>
 <span class="c1"># Filename to retrieve from gcloud bucket &amp; where to store</span>
 <span class="n">protocol_fname</span> <span class="o">=</span> <span class="s">&quot;gcloud_mle_protocol.db&quot;</span>
+
+<span class="c1"># Syncing of protocol with GCloud</span>
+<span class="n">use_protocol_sync</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="c1"># Storing of experiment results in bucket</span>
+<span class="n">use_results_storage</span> <span class="o">=</span> <span class="kc">false</span>
+
+    <span class="c1"># Default GCP job arguments (if not differently supplied)</span>
+    <span class="k">[gcp.default_job_arguments]</span>
+    <span class="n">num_logical_cores</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">num_gpus</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">use_tpus</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="n">job_name</span> <span class="o">=</span> <span class="s">&#39;temp&#39;</span>
+    <span class="n">log_file</span> <span class="o">=</span> <span class="s">&#39;log&#39;</span>
+    <span class="n">err_file</span> <span class="o">=</span> <span class="s">&#39;err&#39;</span>
 </code></pre></div>
-<h2 id="resource-dashboard-monitoring">Resource Dashboard Monitoring</h2>
-<p><a href="../../core_api/mle_monitor/"><code>mle monitor</code></a> - add how to set monitored partition/nodes/etc.</p>
-<h2 id="slack-bot-notification">Slack Bot Notification</h2>
+<h2 id="slack-bot-notification">Slack Bot Notification 🔈</h2>
 <p>If you want to, you can add slack notifications using the <a href="https://github.com/sprekelerlab/slack-clusterbot/"><code>slack-clusterbot</code></a>. If you want to learn more about how to set it up, checkout the <a href="https://github.com/sprekelerlab/slack-clusterbot/wiki/Installation">wiki documentation</a>. To make it short, you need to create a Bot User OAuth Access Token for your slack workspace and afterwards add this to your <code>mle_config.toml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">#------------------------------------------------------------------------------#</span>
 <span class="c1"># 5. Slack Bot Config - OAuth Access Token &amp; Config Path</span>
@@ -942,7 +933,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../experiments/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Supported Experiments" rel="prev">
+        <a href="../experiments/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Experiment Configuration" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -951,26 +942,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Supported Experiments
+              Experiment Configuration
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../getting_started/" class="md-footer__link md-footer__link--next" aria-label="Next: Video Tutorials" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Video Tutorials
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
@@ -1023,7 +999,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.649a939e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
       
     
   </body>

@@ -15,15 +15,15 @@
         <link rel="canonical" href="https://mle-infrastructure.github.io/mle_toolbox/experiments/">
       
       <link rel="icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.2">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
     
     
       
-        <title>Supported Experiments - Machine Learning Experiment Infrastructure</title>
+        <title>Experiment Configuration - Machine Learning Experiment Infrastructure</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.f7951f6f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#supported-experiments" class="md-skip">
+        <a href="#experiment-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Supported Experiments
+              Experiment Configuration
             
           </span>
         </div>
@@ -609,12 +609,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Supported Experiments
+          Experiment Configuration
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Supported Experiments
+        Experiment Configuration
       </a>
       
         
@@ -633,8 +633,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pre-post-processing" class="md-nav__link">
-    Pre-/Post-Processing
+  <a href="#basic-configuration" class="md-nav__link">
+    Basic Configuration
   </a>
   
 </li>
@@ -660,6 +660,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pre-post-processing" class="md-nav__link">
+    Pre-/Post-Processing
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -677,20 +684,6 @@
     <li class="md-nav__item">
       <a href="../configuration/" class="md-nav__link">
         Toolbox Configuration
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting_started/" class="md-nav__link">
-        Video Tutorials
       </a>
     </li>
   
@@ -730,8 +723,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pre-post-processing" class="md-nav__link">
-    Pre-/Post-Processing
+  <a href="#basic-configuration" class="md-nav__link">
+    Basic Configuration
   </a>
   
 </li>
@@ -757,6 +750,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pre-post-processing" class="md-nav__link">
+    Pre-/Post-Processing
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -774,63 +774,76 @@
 </a>
 
 
-<h1 id="supported-experiments">Supported Experiments</h1>
-<p><em>Note</em>: This page and content is still work in progress!</p>
-<h2 id="pre-post-processing">Pre-/Post-Processing</h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Parameters for the pre-processing job</span>
-<span class="nt">pre_processing_args</span><span class="p">:</span>
-    <span class="nt">processing_fname</span><span class="p">:</span> <span class="s">&quot;&lt;run_preprocessing&gt;.py&quot;</span>
-    <span class="nt">processing_job_args</span><span class="p">:</span>
-        <span class="nt">num_logical_cores</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-        <span class="nt">time_per_job</span><span class="p">:</span> <span class="s">&quot;00:01:00&quot;</span>
-    <span class="nt">extra_cmd_line_input</span><span class="p">:</span>
-        <span class="nt">figures_dir</span><span class="p">:</span> <span class="s">&quot;experiments/data&quot;</span>
-
-<span class="c1"># Parameters for the post-processing job</span>
-<span class="nt">post_processing_args</span><span class="p">:</span>
-    <span class="nt">processing_fname</span><span class="p">:</span> <span class="s">&quot;&lt;run_postprocessing&gt;.py&quot;</span>
-    <span class="nt">processing_job_args</span><span class="p">:</span>
-        <span class="nt">num_logical_cores</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-        <span class="nt">time_per_job</span><span class="p">:</span> <span class="s">&quot;00:01:00&quot;</span>
-    <span class="nt">extra_cmd_line_input</span><span class="p">:</span>
-        <span class="nt">figures_dir</span><span class="p">:</span> <span class="s">&quot;experiments/figures&quot;</span>
+<h1 id="experiment-configuration">Experiment Configuration</h1>
+<p>Each experiment you want to execute via <code>mle run</code> has to be specified via a <code>.yaml</code> file. This file has to contain a set of basic ingredients such as meta arguments (which script to execute, etc.) - <code>meta_job_args</code>, the experiment type-specific arguments and resource/single job-specific arguments - <code>single_job_args</code>.</p>
+<h2 id="basic-configuration">Basic Configuration</h2>
+<p>The <code>meta_job_args</code> specify the project name, experiment type, directory and base job script/configuration. For a hyperparameter search experiment it should look as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Meta Arguments: What job? What train .py file? Base config? Where to store?</span>
+<span class="nt">meta_job_args</span><span class="p">:</span>
+    <span class="nt">project_name</span><span class="p">:</span> <span class="s">&quot;&lt;project_name&gt;&quot;</span>  <span class="c1"># Project name for protocol db</span>
+    <span class="nt">experiment_type</span><span class="p">:</span> <span class="s">&quot;&lt;experiment_type&gt;&quot;</span>  <span class="c1"># [&#39;hyperparameter-search&#39;, &#39;multiple-configs&#39;, &#39;single-config&#39;, &#39;population-based-training&#39;]</span>
+    <span class="nt">experiment_dir</span><span class="p">:</span> <span class="s">&quot;&lt;experiment_dir&gt;&quot;</span>  <span class="c1"># Directory to store results in</span>
+    <span class="nt">base_train_fname</span><span class="p">:</span> <span class="s">&quot;&lt;train&gt;.py&quot;</span>  <span class="c1"># Base .py/.sh job execution script</span>
+    <span class="nt">base_train_config</span><span class="p">:</span> <span class="s">&quot;&lt;train_config&gt;.yaml&quot;</span>  <span class="c1"># Base .json/.yaml job configuration</span>
 </code></pre></div>
+<p>The <code>job_spec_args</code>, on the other hand, specifies environment settings and the resources required per individual job. E.g.:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Parameters specific to an individual job</span>
+<span class="nt">single_job_args</span><span class="p">:</span>
+    <span class="nt">job_name</span><span class="p">:</span> <span class="s">&quot;&lt;jname&gt;&quot;</span>  <span class="c1"># Job name prefix used for qsub/sbatch</span>
+    <span class="nt">num_logical_cores</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>  <span class="c1"># Number of logical cpu cores</span>
+    <span class="nt">num_gpus</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>  <span class="c1"># Number of gpus required per job</span>
+    <span class="nt">env_name</span><span class="p">:</span> <span class="s">&quot;&lt;env_name&gt;&quot;</span>  <span class="c1"># Name of virtual environment to activat at startup</span>
+    <span class="nt">use_conda_venv</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>  <span class="c1"># Whether to use a conda environment</span>
+    <span class="nt">time_per_job</span><span class="p">:</span> <span class="s">&quot;&lt;dd:hh:mm&gt;&quot;</span>  <span class="c1"># Time limits of a job</span>
+</code></pre></div>
+<p>Given a fixed training configuration file and the Python training script, the only thing that has to be adapted for the different types of experiments are the experiment type-specific arguments. These include:</p>
+<ul>
+<li><code>multi_config_args</code>: For multi-configuration &amp; multi-seed experiments</li>
+<li><code>param_search_args</code>: For hyperparameter search experiments</li>
+<li><code>pbt_args</code>: For Population-Based Training</li>
+</ul>
 <h2 id="multiple-configurations-seeds">Multiple Configurations &amp; Seeds</h2>
 <div class="highlight"><pre><span></span><code><span class="nt">multi_config_args</span><span class="p">:</span>
-    <span class="nt">config_fnames</span><span class="p">:</span>
+    <span class="nt">config_fnames</span><span class="p">:</span>  <span class="c1"># List of configuration files to execute</span>
         <span class="p p-Indicator">-</span> <span class="s">&quot;config_1.json&quot;</span>
         <span class="p p-Indicator">-</span> <span class="s">&quot;config_2.json&quot;</span>
-    <span class="nt">num_seeds</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+    <span class="nt">num_seeds</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>  <span class="c1"># Number of seeds to schedule</span>
 </code></pre></div>
 <h2 id="hyperparameter-search">Hyperparameter Search</h2>
-<p>Given a fixed training configuration file and the Python training script the only thing that has to be adapted for the different types of experiments is the meta configuration file.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Parameters specific to the hyperparameter search</span>
 <span class="nt">param_search_args</span><span class="p">:</span>
-    <span class="nt">search_logging</span><span class="p">:</span>
-        <span class="nt">reload_log</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-        <span class="nt">verbose_log</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-        <span class="nt">max_objective</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-        <span class="nt">problem_type</span><span class="p">:</span> <span class="s">&quot;final&quot;</span>
-        <span class="nt">eval_metrics</span><span class="p">:</span> <span class="s">&quot;test_loss&quot;</span>
-    <span class="nt">search_resources</span><span class="p">:</span>
-        <span class="nt">num_search_batches</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-        <span class="nt">num_evals_per_batch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-        <span class="nt">num_seeds_per_eval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="nt">search_config</span><span class="p">:</span>
-        <span class="nt">search_type</span><span class="p">:</span> <span class="s">&quot;grid&quot;</span>  <span class="c1"># &quot;random&quot;/&quot;smbo&quot;</span>
-        <span class="nt">search_schedule</span><span class="p">:</span> <span class="s">&quot;sync&quot;</span>
+    <span class="nt">search_logging</span><span class="p">:</span>  <span class="c1"># Logging-specific settings</span>
+        <span class="nt">reload_log</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>  <span class="c1"># Load a previous hyper log</span>
+        <span class="nt">verbose_log</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>  <span class="c1"># Print intermediate batch results</span>
+        <span class="nt">max_objective</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>  <span class="c1"># Whether to max or min objective</span>
+        <span class="nt">aggregate_seeds</span><span class="p">:</span> <span class="s">&quot;p50&quot;</span>  <span class="c1"># Aggregation metric across seeds</span>
+        <span class="nt">problem_type</span><span class="p">:</span> <span class="s">&quot;final&quot;</span>  <span class="c1"># How to score configs (&#39;final&#39;, &#39;best&#39;, &#39;mean&#39;)</span>
+        <span class="nt">eval_metrics</span><span class="p">:</span> <span class="s">&quot;test_loss&quot;</span>  <span class="c1"># Metric to look up for scoring</span>
+    <span class="nt">search_resources</span><span class="p">:</span>  <span class="c1"># Resource scheduling settings</span>
+        <span class="c1"># num_search_batches: 4</span>
+        <span class="c1"># num_evals_per_batch: 4</span>
+        <span class="nt">num_total_evals</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>  <span class="c1"># Number of total evaluations</span>
+        <span class="nt">max_running_jobs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>  <span class="c1"># Number of max jobs running at one time</span>
+        <span class="nt">num_seeds_per_eval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>  <span class="c1"># Number of seeds per evaluation</span>
+        <span class="nt">random_seeds</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">2</span><span class="p p-Indicator">]</span>  <span class="c1"># Explicitly fix seeds to run</span>
+    <span class="nt">search_config</span><span class="p">:</span>  <span class="c1"># Search strategy-specific settings</span>
+        <span class="nt">search_type</span><span class="p">:</span> <span class="s">&quot;grid&quot;</span>
+        <span class="c1"># search_schedule: &quot;sync&quot;</span>
+        <span class="nt">search_schedule</span><span class="p">:</span> <span class="s">&quot;async&quot;</span>  <span class="c1"># &quot;sync&quot; or &quot;async&quot; job/batch scheduling</span>
         <span class="nt">search_params</span><span class="p">:</span>
-            <span class="nt">categorical</span><span class="p">:</span>
-                <span class="nt">opt_type</span><span class="p">:</span>
-                    <span class="p p-Indicator">-</span> <span class="s">&quot;Adam&quot;</span>
-                    <span class="p p-Indicator">-</span> <span class="s">&quot;RMSprop&quot;</span>
             <span class="nt">real</span><span class="p">:</span>
-                <span class="nt">l_rate</span><span class="p">:</span>
-                    <span class="nt">begin</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1e-5</span>
-                    <span class="nt">end</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1e-2</span>
+                <span class="nt">lrate</span><span class="p">:</span>
+                    <span class="nt">begin</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+                    <span class="nt">end</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+                    <span class="nt">bins</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+            <span class="nt">integer</span><span class="p">:</span>
+                <span class="nt">batch_size</span><span class="p">:</span>
+                    <span class="nt">begin</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+                    <span class="nt">end</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
                     <span class="nt">bins</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
 </code></pre></div>
 <h2 id="population-based-training">Population-Based Training</h2>
+<p><strong>Note</strong>: Population-Based Training is still experimental and will most likely change. More updates to follow. Most likely the toolbox will only support a synchronous version.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Parameters specific to the population-based training</span>
 <span class="nt">pbt_args</span><span class="p">:</span>
     <span class="nt">pbt_logging</span><span class="p">:</span>
@@ -851,6 +864,26 @@
             <span class="nt">strategy</span><span class="p">:</span> <span class="s">&quot;perturb&quot;</span>
         <span class="nt">selection</span><span class="p">:</span>
             <span class="nt">strategy</span><span class="p">:</span> <span class="s">&quot;truncation&quot;</span>
+</code></pre></div>
+<h2 id="pre-post-processing">Pre-/Post-Processing</h2>
+<p>You can also add <code>pre_processing_args</code> and <code>post_processing_args</code> if you would like to either launch a job before or after the main experiment. This can be useful if you need to prepare some data that is afterwards used by all main experiment jobs or if you want to run some analysis using the networks trained in the main experiment.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Parameters for the pre-processing job</span>
+<span class="nt">pre_processing_args</span><span class="p">:</span>
+    <span class="nt">processing_fname</span><span class="p">:</span> <span class="s">&quot;&lt;run_preprocessing&gt;.py&quot;</span>
+    <span class="nt">processing_job_args</span><span class="p">:</span>
+        <span class="nt">num_logical_cores</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+        <span class="nt">time_per_job</span><span class="p">:</span> <span class="s">&quot;00:01:00&quot;</span>
+    <span class="nt">extra_cmd_line_input</span><span class="p">:</span>
+        <span class="nt">figures_dir</span><span class="p">:</span> <span class="s">&quot;experiments/data&quot;</span>
+
+<span class="c1"># Parameters for the post-processing job</span>
+<span class="nt">post_processing_args</span><span class="p">:</span>
+    <span class="nt">processing_fname</span><span class="p">:</span> <span class="s">&quot;&lt;run_postprocessing&gt;.py&quot;</span>
+    <span class="nt">processing_job_args</span><span class="p">:</span>
+        <span class="nt">num_logical_cores</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+        <span class="nt">time_per_job</span><span class="p">:</span> <span class="s">&quot;00:01:00&quot;</span>
+    <span class="nt">extra_cmd_line_input</span><span class="p">:</span>
+        <span class="nt">figures_dir</span><span class="p">:</span> <span class="s">&quot;experiments/figures&quot;</span>
 </code></pre></div>
 
               
@@ -946,7 +979,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.649a939e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
       
     
   </body>

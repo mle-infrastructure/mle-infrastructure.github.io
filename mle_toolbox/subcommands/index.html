@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://mle-infrastructure.github.io/mle_toolbox/subcommands/">
       
       <link rel="icon" href="../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.2">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.f7951f6f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -620,56 +620,56 @@
       
         <li class="md-nav__item">
   <a href="#mle-run-experiment-execution" class="md-nav__link">
-    mle run - Experiment Execution
+    mle run - Experiment Execution 🚀
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-monitor-monitor-resources" class="md-nav__link">
-    mle monitor - Monitor Resources
+    mle monitor - Monitor Resources 🖥️
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-retrieve-retrieve-results" class="md-nav__link">
-    mle retrieve - Retrieve Results
+    mle retrieve - Retrieve Results 📥
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-report-report-results" class="md-nav__link">
-    mle report - Report Results
+    mle report - Report Results 💌
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mle-init-setup-the-toolbox-configuration" class="md-nav__link">
-    mle init - Setup The Toolbox Configuration
+  <a href="#mle-init-setup-toolbox-configuration" class="md-nav__link">
+    mle init - Setup Toolbox Configuration ⏳
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mle-sync-gcs-download-gcs-backed-experiments" class="md-nav__link">
-    mle sync-gcs - Download GCS-Backed Experiments
+  <a href="#mle-sync-download-gcs-backed-experiments" class="md-nav__link">
+    mle sync - Download GCS-Backed Experiments 🔄
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-project-initialize-new-template-project" class="md-nav__link">
-    mle project - Initialize New Template Project
+    mle project - Initialize New Template Project 🗂
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-protocol-list-state-of-protocol" class="md-nav__link">
-    mle protocol - List State of Protocol
+    mle protocol - List State of Protocol 📝
   </a>
   
 </li>
@@ -690,7 +690,7 @@
   
     <li class="md-nav__item">
       <a href="../experiments/" class="md-nav__link">
-        Supported Experiments
+        Experiment Configuration
       </a>
     </li>
   
@@ -705,20 +705,6 @@
     <li class="md-nav__item">
       <a href="../configuration/" class="md-nav__link">
         Toolbox Configuration
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting_started/" class="md-nav__link">
-        Video Tutorials
       </a>
     </li>
   
@@ -759,56 +745,56 @@
       
         <li class="md-nav__item">
   <a href="#mle-run-experiment-execution" class="md-nav__link">
-    mle run - Experiment Execution
+    mle run - Experiment Execution 🚀
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-monitor-monitor-resources" class="md-nav__link">
-    mle monitor - Monitor Resources
+    mle monitor - Monitor Resources 🖥️
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-retrieve-retrieve-results" class="md-nav__link">
-    mle retrieve - Retrieve Results
+    mle retrieve - Retrieve Results 📥
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-report-report-results" class="md-nav__link">
-    mle report - Report Results
+    mle report - Report Results 💌
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mle-init-setup-the-toolbox-configuration" class="md-nav__link">
-    mle init - Setup The Toolbox Configuration
+  <a href="#mle-init-setup-toolbox-configuration" class="md-nav__link">
+    mle init - Setup Toolbox Configuration ⏳
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mle-sync-gcs-download-gcs-backed-experiments" class="md-nav__link">
-    mle sync-gcs - Download GCS-Backed Experiments
+  <a href="#mle-sync-download-gcs-backed-experiments" class="md-nav__link">
+    mle sync - Download GCS-Backed Experiments 🔄
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-project-initialize-new-template-project" class="md-nav__link">
-    mle project - Initialize New Template Project
+    mle project - Initialize New Template Project 🗂
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#mle-protocol-list-state-of-protocol" class="md-nav__link">
-    mle protocol - List State of Protocol
+    mle protocol - List State of Protocol 📝
   </a>
   
 </li>
@@ -831,36 +817,47 @@
 
 
 <h1 id="mle-subcommands">MLE Subcommands</h1>
-<h2 id="mle-run-experiment-execution"><code>mle run</code> - Experiment Execution</h2>
-<p><a href="../core_api/mle_run.gif"><img src="../core_api/mle_run.gif" width=900 align="center" /></a></p>
+<p>The main entry point for using the <code>mle-toolbox</code> is via its subcommands. Similar to how you would call <code>git &lt;subcmd&gt;</code>, you can use the different functionalities of the toolbox via <code>mle &lt;subcmd&gt;</code>. In the following we will go through all of the available subcommands and disuss their usage and optional inputs.</p>
+<h2 id="mle-run-experiment-execution"><code>mle run</code> - Experiment Execution 🚀</h2>
 <p>An experiment can be launched from the command line via:</p>
 <div class="highlight"><pre><span></span><code>mle run &lt;experiment_config&gt;.yaml
 </code></pre></div>
-<p>You can add several command line options, which can come in handy when debugging or if you want to launch multiple experiments sequentially:</p>
+<p>The <code>&lt;experiment_config&gt;.yaml</code> file provides all experiment settings such as the experiment type and resources required per individual job. Read more about how to configure it <a href="https://mle-infrastructure.github.io/mle_toolbox/experiments/">here</a>. You can add several command line options, which can come in handy when debugging or if you want to launch multiple experiments sequentially:</p>
 <ul>
 <li><code>--no_welcome</code>: Don't print welcome messages at experiment launch.</li>
 <li><code>--no_protocol</code>: Do not record experiment in the PickleDB protocol database.</li>
 <li><code>--resource_to_run &lt;resource&gt;</code>: Run the experiment on the specified resource.</li>
+<li><code>--purpose</code>: String purpose to store in the protocol database.</li>
 </ul>
-<p>In the following we walk through the different types of supported experiments and show how to provide the necessary configuration specifications.</p>
-<h2 id="mle-monitor-monitor-resources"><code>mle monitor</code> - Monitor Resources</h2>
+<p>The <code>--purpose</code> option is especially useful if you would like execute multiple experiments sequentially. In this case you would like to run a bash script and not have to specify the purpose at launch time. E.g.</p>
+<div class="highlight"><pre><span></span><code>mle run exp_1.yaml --purpose Experiment 1 Grid
+mle run exp_2.yaml --purpose Experiment 2 Grid
+</code></pre></div>
+<p>By default the jobs will run on your local machine. If you specify a different <code>&lt;resource&gt;</code> you will be asked whether you would like to sync your code with a remote directory. Afterwards, the experiment will continue to be executed on that resource.</p>
+<p><a href="../core_api/mle_run.gif"><img src="../core_api/mle_run.gif" width=900 align="center" /></a></p>
+<h2 id="mle-monitor-monitor-resources"><code>mle monitor</code> - Monitor Resources 🖥️</h2>
+<p><code>mle monitor</code> provides a simple wrapper around the <a href="https://github.com/mle-infrastructure/mle-monitor"><code>mle-monitor</code></a> dashboard. It will load the protocol database using the configuration settings provided in <code>~/mle_config.toml</code> and the resource you are currently working on. Afterwards, the dashboard will be updated in real time and synchronized with most recent protocol from the GCS bucket every other minute.</p>
 <p><a href="../core_api/mle_monitor.gif"><img src="../core_api/mle_monitor.gif" width=900 align="center" /></a></p>
-<h2 id="mle-retrieve-retrieve-results"><code>mle retrieve</code> - Retrieve Results</h2>
+<h2 id="mle-retrieve-retrieve-results"><code>mle retrieve</code> - Retrieve Results 📥</h2>
+<p>Once your experiment has finished, you can retrieve its results (logging directory) using the <code>mle retrieve</code> subcommand. This will fetch the corresponding remote/GCS storage path from the protocol database and then copy the results over.</p>
 <p><a href="../core_api/mle_retrieve.gif"><img src="../core_api/mle_retrieve.gif" width=900 align="center" /></a></p>
-<h2 id="mle-report-report-results"><code>mle report</code> - Report Results</h2>
+<h2 id="mle-report-report-results"><code>mle report</code> - Report Results 💌</h2>
+<p><code>mle report</code> will create a set of report files (<code>.html</code>, <code>.md</code> &amp; <code>.pdf</code>) corresponding to your experiment. The files will contain the experiment configuration and figures generated from the experiment logs. Alternatively, you can also set <code>report_generation</code> to <code>true</code> in the <code>meta_job_args</code> of your experiment <code>.yaml</code> file. In this case the report will be automatically created once your experiment is completed. If you are using the slack bot notification feature the report will be send to your slack account.</p>
 <!-- <a href="../core_api/mle_report.gif"><img src="../core_api/mle_report.gif" width=900 align="center" /></a> -->
 
-<h2 id="mle-init-setup-the-toolbox-configuration"><code>mle init</code> - Setup The Toolbox Configuration</h2>
-<!-- <a href="../core_api/mle_init.gif"><img src="../core_api/mle_init.gif" width=900 align="center" /></a> -->
-
-<h2 id="mle-sync-gcs-download-gcs-backed-experiments"><code>mle sync-gcs</code> - Download GCS-Backed Experiments</h2>
+<h2 id="mle-init-setup-toolbox-configuration"><code>mle init</code> - Setup Toolbox Configuration ⏳</h2>
+<p>When you first start to setup the toolbox, you can run <code>mle init</code> in order to create a <code>mle_config.toml</code> file that is stored in your root directory. It automatically launch your favorite editor so that you can modify your configuration settings.</p>
+<p><a href="../core_api/mle_init.gif"><img src="../core_api/mle_init.gif" width=900 align="center" /></a></p>
+<h2 id="mle-sync-download-gcs-backed-experiments"><code>mle sync</code> - Download GCS-Backed Experiments 🔄</h2>
+<p>If you have run multiple experiments over night and you would like to retrieve all experiments from your GCS bucket which were not synced previously, you can simply run <code>mle sync</code>. The toolbox will retrieve all zipped experiment directories and unpack them for you.</p>
 <!-- <a href="../core_api/mle_sync.gif"><img src="../core_api/mle_sync.gif" width=900 align="center" /></a> -->
 
-<h2 id="mle-project-initialize-new-template-project"><code>mle project</code> - Initialize New Template Project</h2>
-<!-- <a href="../core_api/mle_project.gif"><img src="../core_api/mle_project.gif" width=900 align="center" /></a> -->
-
-<h2 id="mle-protocol-list-state-of-protocol"><code>mle protocol</code> - List State of Protocol</h2>
-<!-- <a href="../core_api/mle_protocol.gif"><img src="../core_api/mle_protocol.gif" width=900 align="center" /></a> -->
+<h2 id="mle-project-initialize-new-template-project"><code>mle project</code> - Initialize New Template Project 🗂</h2>
+<p>I noticed that most of my projects follow the same file structure. It is depicted in the <a href="https://github.com/mle-infrastructure/mle-project"><code>mle-project</code></a> repository. If you run <code>mle project</code>, the toolbox will clone the repository, delete all git files and rename the directory, so that you can directly get started coding up your project with MLE-Infrastructure support.</p>
+<p><a href="../core_api/mle_project.gif"><img src="../core_api/mle_project.gif" width=900 align="center" /></a></p>
+<h2 id="mle-protocol-list-state-of-protocol"><code>mle protocol</code> - List State of Protocol 📝</h2>
+<p>You can get a snapshot of your most recent experiments which were protocolled by running <code>mle_protocol</code>. This can be useful if you don't want to run the dashboard, but simply want to get a quick overview.</p>
+<p><a href="../core_api/mle_protocol.gif"><img src="../core_api/mle_protocol.gif" width=900 align="center" /></a></p>
 
               
             </article>
@@ -890,13 +887,13 @@
       
       
         
-        <a href="../experiments/" class="md-footer__link md-footer__link--next" aria-label="Next: Supported Experiments" rel="next">
+        <a href="../experiments/" class="md-footer__link md-footer__link--next" aria-label="Next: Experiment Configuration" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Supported Experiments
+              Experiment Configuration
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -955,7 +952,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.649a939e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
       
     
   </body>
