@@ -502,6 +502,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#search-method-highlights" class="md-nav__link">
+    Search Method Highlights 🔎
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Method Highlights 🔎">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grid-search" class="md-nav__link">
+    Grid Search 🟥
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyperband" class="md-nav__link">
+    Hyperband 🎸
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#population-based-training" class="md-nav__link">
+    Population-Based Training 🦎
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#further-options" class="md-nav__link">
     Further Options 🚴
   </a>
@@ -818,6 +852,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#search-method-highlights" class="md-nav__link">
+    Search Method Highlights 🔎
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Method Highlights 🔎">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grid-search" class="md-nav__link">
+    Grid Search 🟥
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyperband" class="md-nav__link">
+    Hyperband 🎸
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#population-based-training" class="md-nav__link">
+    Population-Based Training 🦎
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#further-options" class="md-nav__link">
     Further Options 🚴
   </a>
@@ -885,15 +953,16 @@
 <h1 id="the-mle-hyperopt-package">The <code>mle-hyperopt</code> Package</h1>
 <p><a href="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/logo_transparent.png?raw=true"><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/logo_transparent.png?raw=true" width="200" align="right" /></a></p>
 <h2 id="hyperparameter-optimization-made-easy">Hyperparameter optimization made easy 🚀</h2>
-<p>The <code>mle-hyperopt</code> package provides the backbone for all search experiments in the <code>mle-toolbox</code>. It comes with a simple and intuitive API for hyperparameter optimization of your pipeline and will be called internally. Nonetheless, it is a standalone package which can simply be imported. It supports real, integer &amp; categorical search variables and single- or multi-objective optimization. Core features include the following:</p>
+<p>The <code>mle-hyperopt</code> package provides a simple and intuitive API for hyperparameter optimization of your Machine Learning Experiment (MLE) pipeline. It supports real, integer &amp; categorical search variables and single- or multi-objective optimization.</p>
+<p>Core features include the following:</p>
 <ul>
 <li><strong>API Simplicity</strong>: <code>strategy.ask()</code>, <code>strategy.tell()</code> interface &amp; space definition.</li>
-<li><strong>Strategy Diversity</strong>: Grid, random, coordinate search, SMBO &amp; wrapping around FAIR's <a href="https://facebookresearch.github.io/nevergrad/"><code>nevergrad</code></a>.</li>
+<li><strong>Strategy Diversity</strong>: Grid, random, coordinate search, SMBO &amp; wrapping FAIR's <a href="https://facebookresearch.github.io/nevergrad/"><code>nevergrad</code></a>, Successive Halving, Hyperband, Population-Based Training.</li>
 <li><strong>Search Space Refinement</strong> based on the top performing configs via <code>strategy.refine(top_k=10)</code>.</li>
 <li><strong>Export of configurations</strong> to execute via e.g. <code>python train.py --config_fname config.yaml</code>.</li>
 <li><strong>Storage &amp; reload search logs</strong> via <code>strategy.save(&lt;log_fname&gt;)</code>,  <code>strategy.load(&lt;log_fname&gt;)</code>.</li>
 </ul>
-<p>For a quickstart check out the <a href="https://github.com/RobertTLange/mle-hyperopt/blob/main/examples/getting_started.ipynb">notebook blog</a> 📖.</p>
+<p>For a quickstart check out the <a href="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/examples/getting_started.ipynb">notebook blog</a> 📖.</p>
 <h2 id="the-api">The API 🎮</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">mle_hyperopt</span> <span class="kn">import</span> <span class="n">RandomSearch</span>
 
@@ -923,34 +992,52 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/grid.png?raw=true" alt="drawing" width="65"/></td>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/grid.png?raw=true" alt="drawing" width="65"/></td>
 <td><code>GridSearch</code></td>
 <td>Search over list of discrete values</td>
 <td>-</td>
 </tr>
 <tr>
-<td><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/random.png?raw=true" alt="drawing" width="65"/></td>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/random.png?raw=true" alt="drawing" width="65"/></td>
 <td><code>RandomSearch</code></td>
 <td>Random search over variable ranges</td>
 <td><code>refine_after</code>, <code>refine_top_k</code></td>
 </tr>
 <tr>
-<td><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/coordinate.png?raw=true" alt="drawing" width="65"/></td>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/coordinate.png?raw=true" alt="drawing" width="65"/></td>
 <td><code>CoordinateSearch</code></td>
 <td>Coordinate-wise optimization with fixed defaults</td>
 <td><code>order</code>, <code>defaults</code></td>
 </tr>
 <tr>
-<td><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/smbo.png?raw=true" alt="drawing" width="65"/></td>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/smbo.png?raw=true" alt="drawing" width="65"/></td>
 <td><code>SMBOSearch</code></td>
-<td>Sequential model-based optimization</td>
+<td>Sequential model-based optimization <a href="https://ml.informatik.uni-freiburg.de/wp-content/uploads/papers/11-LION5-SMAC.pdf">(Hutter et al., 2011)</a></td>
 <td><code>base_estimator</code>, <code>acq_function</code>, <code>n_initial_points</code></td>
 </tr>
 <tr>
-<td><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/nevergrad.png?raw=true" alt="drawing" width="65"/></td>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/nevergrad.png?raw=true" alt="drawing" width="65"/></td>
 <td><code>NevergradSearch</code></td>
 <td>Multi-objective <a href="https://facebookresearch.github.io/nevergrad/">nevergrad</a> wrapper</td>
 <td><code>optimizer</code>, <code>budget_size</code>, <code>num_workers</code></td>
+</tr>
+<tr>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/halving.png?raw=true" alt="drawing" width="65"/></td>
+<td><code>HalvingSearch</code></td>
+<td>Successive Halving <a href="https://proceedings.mlr.press/v28/karnin13.html">(Karmin et al., 2013)</a></td>
+<td><code>min_budget</code>, <code>num_arms</code>, <code>halving_coeff</code></td>
+</tr>
+<tr>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/hyperband.png?raw=true" alt="drawing" width="65"/></td>
+<td><code>HyperbandSearch</code></td>
+<td>Hyperband <a href="https://arxiv.org/pdf/1603.06560.pdf">(Li et al., 2018)</a></td>
+<td><code>max_resource</code>, <code>eta</code></td>
+</tr>
+<tr>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/pbt.png?raw=true" alt="drawing" width="65"/></td>
+<td><code>PBTSearch</code></td>
+<td>Population-Based Training <a href="https://arxiv.org/pdf/1711.09846.pdf">(Jaderberg et al., 2017)</a></td>
+<td><code>explore</code>, <code>exploit</code></td>
 </tr>
 </tbody>
 </table>
@@ -966,19 +1053,19 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/real.png?raw=true" alt="drawing" width="65"/></td>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/real.png?raw=true" alt="drawing" width="65"/></td>
 <td><strong><code>real</code></strong></td>
 <td>Real-valued</td>
 <td><code>Dict</code>: <code>begin</code>, <code>end</code>, <code>prior</code>/<code>bins</code> (grid)</td>
 </tr>
 <tr>
-<td><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/integer.png?raw=true" alt="drawing" width="65"/></td>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/integer.png?raw=true" alt="drawing" width="65"/></td>
 <td><strong><code>integer</code></strong></td>
 <td>Integer-valued</td>
 <td><code>Dict</code>: <code>begin</code>, <code>end</code>, <code>prior</code>/<code>bins</code> (grid)</td>
 </tr>
 <tr>
-<td><img src="https://github.com/RobertTLange/mle-hyperopt/blob/main/docs/categorical.png?raw=true" alt="drawing" width="65"/></td>
+<td><img src="https://github.com/mle-infrastructure/mle-hyperopt/blob/main/docs/categorical.png?raw=true" alt="drawing" width="65"/></td>
 <td><strong><code>categorical</code></strong></td>
 <td>Categorical</td>
 <td><code>List</code>: Values to search over</td>
@@ -990,13 +1077,59 @@
 <div class="highlight"><pre><span></span><code>pip install mle-hyperopt
 </code></pre></div>
 <p>Alternatively, you can clone this repository and afterwards 'manually' install it:</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/RobertTLange/mle-hyperopt.git
+<div class="highlight"><pre><span></span><code>git clone https://github.com/mle-infrastructure/mle-hyperopt.git
 cd mle-hyperopt
 pip install -e .
 </code></pre></div>
+<h2 id="search-method-highlights">Search Method Highlights 🔎</h2>
+<h3 id="grid-search">Grid Search 🟥</h3>
+<div class="highlight"><pre><span></span><code><span class="n">strategy</span> <span class="o">=</span> <span class="n">GridSearch</span><span class="p">(</span>
+    <span class="n">real</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;lrate&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                    <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}},</span>
+    <span class="n">integer</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;batch_size&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                            <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}},</span>
+    <span class="n">categorical</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mlp&quot;</span><span class="p">,</span> <span class="s2">&quot;cnn&quot;</span><span class="p">]},</span>
+    <span class="n">fixed_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;momentum&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">})</span>
+
+<span class="n">configs</span> <span class="o">=</span> <span class="n">strategy</span><span class="o">.</span><span class="n">ask</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="hyperband">Hyperband 🎸</h3>
+<div class="highlight"><pre><span></span><code><span class="n">strategy</span> <span class="o">=</span> <span class="n">HyperbandSearch</span><span class="p">(</span>
+    <span class="n">real</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;lrate&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                    <span class="s2">&quot;prior&quot;</span><span class="p">:</span> <span class="s2">&quot;uniform&quot;</span><span class="p">}},</span>
+    <span class="n">integer</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;batch_size&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                            <span class="s2">&quot;prior&quot;</span><span class="p">:</span> <span class="s2">&quot;log-uniform&quot;</span><span class="p">}},</span>
+    <span class="n">categorical</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mlp&quot;</span><span class="p">,</span> <span class="s2">&quot;cnn&quot;</span><span class="p">]},</span>
+    <span class="n">search_config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;max_resource&quot;</span><span class="p">:</span> <span class="mi">81</span><span class="p">,</span>
+                   <span class="s2">&quot;eta&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="n">seed_id</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">configs</span> <span class="o">=</span> <span class="n">strategy</span><span class="o">.</span><span class="n">ask</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="population-based-training">Population-Based Training 🦎</h3>
+<div class="highlight"><pre><span></span><code><span class="n">strategy</span> <span class="o">=</span> <span class="n">PBTSearch</span><span class="p">(</span>
+    <span class="n">real</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;lrate&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+                    <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                    <span class="s2">&quot;prior&quot;</span><span class="p">:</span> <span class="s2">&quot;uniform&quot;</span><span class="p">}}</span>
+    <span class="n">search_config</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;exploit&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;truncation&quot;</span><span class="p">,</span> <span class="s2">&quot;selection_percent&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">},</span>
+        <span class="s2">&quot;explore&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;perturbation&quot;</span><span class="p">,</span> <span class="s2">&quot;perturb_coeffs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]},</span>
+        <span class="s2">&quot;steps_until_ready&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;num_workers&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">maximize_objective</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">configs</span> <span class="o">=</span> <span class="n">strategy</span><span class="o">.</span><span class="n">ask</span><span class="p">()</span>
+</code></pre></div>
 <h2 id="further-options">Further Options 🚴</h2>
 <h3 id="saving-reloading-logs">Saving &amp; Reloading Logs 🏪</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Storing &amp; reloading of results from .pkl</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Storing &amp; reloading of results from .json/.yaml/.pkl</span>
 <span class="n">strategy</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;search_log.json&quot;</span><span class="p">)</span>
 <span class="n">strategy</span> <span class="o">=</span> <span class="n">RandomSearch</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">reload_path</span><span class="o">=</span><span class="s2">&quot;search_log.json&quot;</span><span class="p">)</span>
 
@@ -1007,7 +1140,7 @@ pip install -e .
 <h3 id="search-decorator">Search Decorator 🧶</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">mle_hyperopt</span> <span class="kn">import</span> <span class="n">hyperopt</span>
 
-<span class="nd">@hyperopt</span><span class="p">(</span><span class="n">strategy_type</span><span class="o">=</span><span class="s2">&quot;grid&quot;</span><span class="p">,</span>
+<span class="nd">@hyperopt</span><span class="p">(</span><span class="n">strategy_type</span><span class="o">=</span><span class="s2">&quot;Grid&quot;</span><span class="p">,</span>
           <span class="n">num_search_iters</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
           <span class="n">real</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mf">0.</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
                 <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}})</span>
@@ -1037,10 +1170,10 @@ pip install -e .
 <div class="highlight"><pre><span></span><code><span class="c1"># Refine the search space after 5 &amp; 10 iterations based on top 2 configurations</span>
 <span class="n">strategy</span> <span class="o">=</span> <span class="n">RandomSearch</span><span class="p">(</span><span class="n">real</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;lrate&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
                                         <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-                                        <span class="s2">&quot;prior&quot;</span><span class="p">:</span> <span class="s2">&quot;uniform&quot;</span><span class="p">}},</span>
+                                        <span class="s2">&quot;prior&quot;</span><span class="p">:</span> <span class="s2">&quot;log-uniform&quot;</span><span class="p">}},</span>
                         <span class="n">integer</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;batch_size&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;begin&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                                                 <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-                                                <span class="s2">&quot;prior&quot;</span><span class="p">:</span> <span class="s2">&quot;log-uniform&quot;</span><span class="p">}},</span>
+                                                <span class="s2">&quot;prior&quot;</span><span class="p">:</span> <span class="s2">&quot;uniform&quot;</span><span class="p">}},</span>
                         <span class="n">categorical</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arch&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mlp&quot;</span><span class="p">,</span> <span class="s2">&quot;cnn&quot;</span><span class="p">]},</span>
                         <span class="n">search_config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;refine_after&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
                                        <span class="s2">&quot;refine_top_k&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
