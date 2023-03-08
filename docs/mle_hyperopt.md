@@ -168,6 +168,20 @@ strategy.ask(2, store=True)
 strategy.ask(2, store=True, config_fnames=["conf_0.yaml", "conf_1.yaml"])
 ```
 
+### Storing Checkpoint Paths 🛥️
+
+
+```python
+# Ask for 5 configurations to evaluate and get their scores
+configs = strategy.ask(5)
+values = ...
+# Get list of checkpoint paths corresponding to config runs
+ckpts = [f"ckpt_{i}.pt" for i in range(len(configs))]
+# `tell` parameter configs, eval scores & ckpt paths
+# Required for Halving, Hyperband and PBT
+strategy.tell(configs, scores, ckpts)
+```
+
 ### Retrieving Top Performers & Visualizing Results 📉
 
 ```python

@@ -13,7 +13,7 @@ affiliations:
    index: 1
  - name: Science of Intelligence, Research Cluster of Excellence
    index: 2
-date: 11 December 2021
+date: 08 March 2023
 bibliography: paper.bib
 ---
 
